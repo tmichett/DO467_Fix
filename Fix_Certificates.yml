@@ -1,0 +1,27 @@
+---
+- name: Distribute Certificates on FQDN
+  hosts: all
+  tasks:
+    - name: Copy Server Certificates
+      copy:
+        src: "certificates/{{ ansible_fqdn }}.crt"
+        dest: /etc/pki/tls/certs
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copy Server Private Keys for Certificates
+      copy:
+        src: "certificates/{{ ansible_fqdn }}.key"
+        dest: /etc/pki/tls/private
+        owner: root
+        group: root
+        mode: '0644'
+
+---
+- name: Remove ServerA Certificate
+  hosts: nota
+  tasks:
+    - name: Remove ServerA Certificate
+      file:
+        src: /etc/pki/tls/certs/servera.lab.example.com.crt

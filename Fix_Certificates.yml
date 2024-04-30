@@ -18,10 +18,10 @@
         group: root
         mode: '0644'
 
----
 - name: Remove ServerA Certificate
   hosts: nota
   tasks:
     - name: Remove ServerA Certificate
       file:
-        src: /etc/pki/tls/certs/servera.lab.example.com.crt
+        path: /etc/pki/tls/certs/servera.lab.example.com.crt
+        state: absent

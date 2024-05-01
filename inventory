@@ -6,3 +6,6 @@ serverc.lab.example.com
 serverd.lab.example.com
 servere.lab.example.com
 serverf.lab.example.com
+
+[WorkstationX]
+workstation[1:12]

@@ -1,0 +1,12 @@
+---
+- name: Distribute Github Project
+  hosts: WorkstationX
+  tasks:
+    - name: Clone to Workstation
+      ansible.builtin.git:
+        repo: https://github.com/tmichett/DO467_Fix.git
+        dest: /home/student/do467_fix
+        version: main
+
+    - name: Run and Execute the playbook from WorkstationX
+      shell: cd /home/student/do467_fix/ ; ansible-playbook Fix_Certificates.yml 
